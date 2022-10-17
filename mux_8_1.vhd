@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use work.tp8.all;
 
 entity mux_8_1 is
     port (

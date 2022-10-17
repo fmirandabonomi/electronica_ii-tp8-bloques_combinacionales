@@ -1,7 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.tp8.all;
 
 entity cod_8_3_tb is
     -- empty
@@ -18,6 +17,18 @@ architecture tb of cod_8_3_tb is
     signal x_in       : std_logic_vector (7 downto 0);
     signal valido_out : std_logic;
     signal y_out      : std_logic_vector (2 downto 0);
+
+    function num_unos (a : std_logic_vector) return natural is
+        variable w : unsigned(a'range);
+        variable d : natural :=0;
+        begin
+            w := unsigned(a);
+            while to_integer(w) /= 0 loop
+                w := w and (w - 1);
+                d := d + 1;
+            end loop;
+            return d;
+    end function;
 begin
     DUT : cod_8_3 port map (entrada => x_in, 
                              valido => valido_out, 
@@ -66,7 +77,6 @@ end tb;
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.tp8.all;
 
 entity decod_3_8_tb is
     -- empty
@@ -124,7 +134,6 @@ end tb;
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.tp8.all;
 
 entity mux_8_1_tb is
     -- empty
@@ -191,7 +200,7 @@ end tb;
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.tp8.all;
+use work.pkg_rom_16x7.all;
 
 entity rom_16x7_tb is
     -- empty
@@ -273,7 +282,6 @@ end tb;
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.tp8.all;
 
 entity bcd_7seg_tb is
     -- empty
@@ -379,7 +387,6 @@ end tb;
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.tp8.all;
 
 entity teclado_tb is
     -- empty

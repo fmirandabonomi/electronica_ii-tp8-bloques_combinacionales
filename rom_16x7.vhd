@@ -1,7 +1,13 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+package pkg_rom_16x7 is
+    type Tabla16x7 is array (0 to 15) of std_logic_vector (6 downto 0);
+end package;
+
+library IEEE;
+use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.tp8.all;
+use work.pkg_rom_16x7.all;
 
 entity rom_16x7 is
     generic (
