@@ -124,9 +124,9 @@ drv_fila(3) =>--(*)--(0)--(#)--(D)
                  |    +-----------=> buf_col(1)
                  +----------------=> buf_col(0)
 
-buf_col(3..0) =>| Driver de teclado |=> drv_fila(3..0)
+hab           =>| Driver de teclado |=> drv_fila(3..0)
 sel(1..0)     =>| matricial         |
-hab           =>|                   |=> estado_col(3..0)
+buf_col(3..0) =>|                   |=> estado_col(3..0)
 
 ```
 
