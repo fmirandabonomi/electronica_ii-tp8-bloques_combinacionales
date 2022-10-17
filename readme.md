@@ -4,16 +4,16 @@ El objetivo de este práctico es conseguir familiaridad con los bloques lógicos
 
 Para cada componente a desarrollar hay implementado un banco de pruebas de VHDL. Para ejecutar las pruebas usar los siguientes comandos (para ejecutar en linux usar make en lugar de mingw32-make)
 
-Para correr **todas** las pruebas:
+Para correr **todas** las pruebas (se detiene en la primera prueba que falla):
 
 ```
 mingw32-make
 ```
 
-Para correr las pruebas correspondientes al módulo *cod_16_4*
+Para correr las pruebas correspondientes al módulo *cod_8_3*
 
 ```
-mingw32-make cod_16_4
+mingw32-make cod_8_3
 ```
 
 Es necesario tener instalado ghdl y make (mingw32-make en windows). Consultar el TP1 para instrucciones de como configurar un entorno.
@@ -22,43 +22,43 @@ Es necesario tener instalado ghdl y make (mingw32-make en windows). Consultar el
 
 Deberás implementar en VHDL los siguientes bloques combinacionales:
 
-- Codificador $16$ a $4$ (archivo cod_16_4.vhd)
-- Decodificador $4$ a $16$ (archivo decod_4_16.vhd)
-- Multiplexor $16$ a $1$ (archivo mux_16_1.vhd)
+- Codificador $8$ a $3$ (archivo cod_8_3.vhd)
+- Decodificador $3$ a $8$ (archivo decod_3_8.vhd)
+- Multiplexor $8$ a $1$ (archivo mux_8_1.vhd)
 - ROM $16\times 7$ (archivo rom_16x7.vhd)
 
 
-### Codificador $16$ a $4$
+### Codificador $8$ a $3$
 
-El codificador $16$ a $4$ tiene una entrada de $16$ bits en código one-hot, una salida binaria de $4$ bits y una salida de palabra válida. Si el bit $n$ de la entrada es '1' y los demás bits son '0' entonces la salida binaria será $n$ y la salida de palabra válida será '1'. Si todos los bits de entrada son cero o hay más de un uno entonces el valor de salida binaria es indiferente y la salida de palabra válida será '0'. 
+El codificador $8$ a $3$ tiene una entrada de $8$ bits en código one-hot, una salida binaria de $3$ bits y una salida de palabra válida. Si el bit $n$ de la entrada es '1' y los demás bits son '0' entonces la salida binaria será $n$ y la salida de palabra válida será '1'. Si todos los bits de entrada son cero o hay más de un uno entonces el valor de salida binaria es indiferente y la salida de palabra válida será '0'. 
 Ejemplos:
-- Entrada: "0000000000000100" -> Salida: "0010" Palabra válida: '1'.
-- Entrada: "0000000000000000" -> Salida: "XXXX" Palabra válida: '0'.
+- Entrada: "00000100" -> Salida: "0010" Palabra válida: '1'.
+- Entrada: "00000000" -> Salida: "XXXX" Palabra válida: '0'.
 
-### Decodificador $4$ a $16$
+### Decodificador $3$ a $8$
 
-El decodificador $4$ a $16$ tiene una entrada de $4$ bits, una entrada de habilitación y una salida de $16$ bits. Cuando no está habilitado todas las salidas están en cero. Cuando está habilitado y la entrada es $n$ entonces la salida en posición $n$ será '1' y todas las demás serán '0'.
+El decodificador $3$ a $8$ tiene una entrada de $3$ bits, una entrada de habilitación y una salida de $8$ bits. Cuando no está habilitado todas las salidas están en cero. Cuando está habilitado y la entrada es $n$ entonces la salida en posición $n$ será '1' y todas las demás serán '0'.
 
 Ejemplos:
-- Entrada: "0011", Habilitación: '1' -> Salida: "0000000000001000"
-- Entrada: "0011", Habilitación: '0' -> Salida: "0000000000000000"
+- Entrada: "0011", Habilitación: '1' -> Salida: "00001000"
+- Entrada: "0011", Habilitación: '0' -> Salida: "00000000"
 
-### Multiplexor $16$ a $1$
+### Multiplexor $8$ a $1$
 
 En la realización del multiplexor debes emplear el decodificador ya realizado.
 
-El multiplexor de $16$ a $1$ cuenta con una entrada de selección de $4$ bits, una entrada de habilitación, $16$ entradas de datos y una salida. Cuando el multiplexor está deshabilitado la salida estará en un estado de alta impedancia. Cuando el multiplexor está habilitado y la entrada de selección tiene el valor $n$ entonces la salida tendrá el valor lógico de la entrada de dato en posición $n$.
+El multiplexor de $8$ a $1$ cuenta con una entrada de selección de $3$ bits, una entrada de habilitación, $8$ entradas de datos y una salida. Cuando el multiplexor está deshabilitado la salida estará en un estado de alta impedancia. Cuando el multiplexor está habilitado y la entrada de selección tiene el valor $n$ entonces la salida tendrá el valor lógico de la entrada de dato en posición $n$.
 
 Ejemplos:
-- Datos "0000000001000000", Selector "0101", Habilitación '1' -> Salida '1'
-- Datos "0000000001000000", Selector distinto de "0101", Habilitación '1' -> Salida '0'
-- Datos "0000000001000000", Selector "XXXX", Habilitación '0' -> Salida 'Z'
+- Datos "01000000", Selector "101", Habilitación '1' -> Salida '1'
+- Datos "01000000", Selector distinto de "101", Habilitación '1' -> Salida '0'
+- Datos "01000000", Selector "XXX", Habilitación '0' -> Salida 'Z'
 
 ### ROM $16\times 7$
 
 Puedes usar el multiplexor 16 a 1 en la realización de la ROM.
 
-La ROM $16\times 4$ cuenta con una entrada de dirección de $4$ bits, una entrada de habilitación y una salida de $4$ bits. Si la habilitación es '0' entonces la salida estará en alta impedancia. Si la habilitación es '1' y la dirección $n$ entonces la salida corresponde al dato almacenado en la dirección $n$.
+La ROM $16\times 7$ cuenta con una entrada de dirección de $7$ bits, una entrada de habilitación y una salida de $7$ bits. Si la habilitación es '0' entonces la salida estará en alta impedancia. Si la habilitación es '1' y la dirección $n$ entonces la salida corresponde al dato almacenado en la dirección $n$.
 
 Ejemplos:
 Contenido:  (0 =>"0000001",1 =>"1001111",2 =>"0010010",3 =>"0000110",4 =>"1001100",
@@ -130,4 +130,4 @@ hab           =>|                   |=> estado_col(3..0)
 
 ```
 
-El driver de teclado matricial cuenta con una entrada de habilitación, una entrada de selección de fila de dos bits, una salida de excitación de fila de cuatro bits de drenador abierto (solo toma valores '0' o 'Z'), una entrada de buffer de columnas de cuatro bits y una salida de estado de columnas de cuatro bits. La salidas de excitación de fila y entradas de buffer de columna son destinadas a conectar el teclado matricial. Si la entrada de habilitación es '0' entonces las salidas de excitación de fila y estado de columna se deben mantener en alta impedancia. Si la entrada de habilitación es '1' y la entrada de selección de fila es $n$ entonces la salida de excitación de fila número $n$ toma valor '0' mientras que las demás salidas de excitación permanecen en alta impedancia, y las salidas de estado de columna toman el valor '1' para las columnas en estado '0' y el valor '0' en otro caso.
+El driver de teclado matricial cuenta con una entrada de habilitación, una entrada de selección de fila de dos bits, una salida de excitación de fila de cuatro bits de drenador abierto (lógica invertida, el '1' cuenta como alta impedancia), una entrada de buffer de columnas de cuatro bits y una salida de estado de columnas de cuatro bits. La salidas de excitación de fila y entradas de buffer de columna son destinadas a conectar el teclado matricial. Si la entrada de habilitación es '0' entonces las salidas de excitación de fila deben mantenerse en '1' y estado de columna en alta impedancia ('Z'). Si la entrada de habilitación es '1' y la entrada de selección de fila es $n$ entonces la salida de excitación de fila número $n$ toma valor '0' mientras que las demás salidas de excitación toman el valor '1', y las salidas de estado de columna toman el valor '1' para las columnas en estado '0' y el valor '0' en otro caso.
