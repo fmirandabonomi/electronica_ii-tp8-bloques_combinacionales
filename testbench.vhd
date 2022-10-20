@@ -78,33 +78,33 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity decod_3_8_tb is
+entity decod_2_4_tb is
     -- empty
-end decod_3_8_tb;
+end decod_2_4_tb;
 
-architecture tb of decod_3_8_tb is
-    constant nombre : string := "decod_3_8";
-    component decod_3_8 is
+architecture tb of decod_2_4_tb is
+    constant nombre : string := "decod_2_4";
+    component decod_2_4 is
         port (
-            sel    : in std_logic_vector (2 downto 0);
+            sel    : in std_logic_vector (1 downto 0);
             hab    : in std_logic;
-            salida : out std_logic_vector (7 downto 0));
+            salida : out std_logic_vector (3 downto 0));
     end component;
-    signal sel_in : std_logic_vector (2 downto 0);
+    signal sel_in : std_logic_vector (1 downto 0);
     signal hab_in : std_logic;
-    signal y_out  : std_logic_vector (7 downto 0);
+    signal y_out  : std_logic_vector (3 downto 0);
 begin
-    DUT : decod_3_8 port map (sel => sel_in,hab => hab_in,salida => y_out);
+    DUT : decod_2_4 port map (sel => sel_in,hab => hab_in,salida => y_out);
     process
         variable pass       : boolean := true;
         variable all_pass   : boolean := true;
-        variable y_esperado : std_logic_vector (7 downto 0);
+        variable y_esperado : std_logic_vector (3 downto 0);
     begin
-        for i in 0 to 7 loop
+        for i in 0 to 3 loop
             if not all_pass then
                 exit;
             end if;
-            sel_in <= std_logic_vector(to_unsigned(i,3));
+            sel_in <= std_logic_vector(to_unsigned(i,2));
             hab_in <= '0';
             y_esperado := (others=>'0');
             wait for 1 ns;
@@ -113,7 +113,7 @@ begin
             assert pass report "Salida debe mantenerse en cero si inhabilitado"
             severity error;
             hab_in <= '1';
-            y_esperado := std_logic_vector(to_unsigned(2**i,8));
+            y_esperado := std_logic_vector(to_unsigned(2**i,4));
             wait for 1 ns;
             pass := y_esperado = y_out;
             all_pass := pass and all_pass;

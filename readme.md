@@ -10,7 +10,7 @@ Para correr **todas** las pruebas (se detiene en la primera prueba que falla):
 mingw32-make
 ```
 
-Para correr las pruebas correspondientes al módulo *cod_8_3*
+Para correr las pruebas correspondientes a un módulo en particular usa ```mingw32-make <modulo>```. Por ejemplo para *cod_8_3* usa
 
 ```
 mingw32-make cod_8_3
@@ -18,12 +18,14 @@ mingw32-make cod_8_3
 
 Es necesario tener instalado ghdl y make (mingw32-make en windows). Consultar el TP1 para instrucciones de como configurar un entorno.
 
+Para completar el práctico consulta las secciones *Bloques combinacionales* y *Aplicación*. Para completar el práctico consulta la sección *Entrega del práctico*.
+
 ## Bloques combinacionales
 
 Deberás implementar en VHDL los siguientes bloques combinacionales:
 
 - Codificador $8$ a $3$ (archivo cod_8_3.vhd)
-- Decodificador $3$ a $8$ (archivo decod_3_8.vhd)
+- Decodificador $2$ a $4$ (archivo decod_2_4.vhd)
 - Multiplexor $8$ a $1$ (archivo mux_8_1.vhd)
 - ROM $16\times 7$ (archivo rom_16x7.vhd)
 
@@ -35,17 +37,15 @@ Ejemplos:
 - Entrada: "00000100" -> Salida: "0010" Palabra válida: '1'.
 - Entrada: "00000000" -> Salida: "XXXX" Palabra válida: '0'.
 
-### Decodificador $3$ a $8$
+### Decodificador $2$ a $4$
 
-El decodificador $3$ a $8$ tiene una entrada de $3$ bits, una entrada de habilitación y una salida de $8$ bits. Cuando no está habilitado todas las salidas están en cero. Cuando está habilitado y la entrada es $n$ entonces la salida en posición $n$ será '1' y todas las demás serán '0'.
+El decodificador $2$ a $4$ tiene una entrada binaria de $2$ bits, una entrada de habilitación y una salida de $4$ bits. Cuando no está habilitado todas las salidas están en cero. Cuando está habilitado y la entrada es $n$ entonces la salida en posición $n$ será '1' y todas las demás serán '0'.
 
 Ejemplos:
-- Entrada: "0011", Habilitación: '1' -> Salida: "00001000"
-- Entrada: "0011", Habilitación: '0' -> Salida: "00000000"
+- Entrada: "11", Habilitación: '1' -> Salida: "1000"
+- Entrada: "11", Habilitación: '0' -> Salida: "0000"
 
 ### Multiplexor $8$ a $1$
-
-En la realización del multiplexor debes emplear el decodificador ya realizado.
 
 El multiplexor de $8$ a $1$ cuenta con una entrada de selección de $3$ bits, una entrada de habilitación, $8$ entradas de datos y una salida. Cuando el multiplexor está deshabilitado la salida estará en un estado de alta impedancia. Cuando el multiplexor está habilitado y la entrada de selección tiene el valor $n$ entonces la salida tendrá el valor lógico de la entrada de dato en posición $n$.
 
@@ -131,3 +131,16 @@ buf_col(3..0) =>|                   |=> estado_col(3..0)
 ```
 
 El driver de teclado matricial cuenta con una entrada de habilitación, una entrada de selección de fila de dos bits, una salida de excitación de fila de cuatro bits de drenador abierto (lógica invertida, el '1' cuenta como alta impedancia), una entrada de buffer de columnas de cuatro bits y una salida de estado de columnas de cuatro bits. La salidas de excitación de fila y entradas de buffer de columna son destinadas a conectar el teclado matricial. Si la entrada de habilitación es '0' entonces las salidas de excitación de fila deben mantenerse en '1' y estado de columna en alta impedancia ('Z'). Si la entrada de habilitación es '1' y la entrada de selección de fila es $n$ entonces la salida de excitación de fila número $n$ toma valor '0' mientras que las demás salidas de excitación toman el valor '1', y las salidas de estado de columna toman el valor '1' para las columnas en estado '0' y el valor '0' en otro caso.
+
+## Entrega del práctico
+
+Como este práctico cuenta con varios archivos fuente, para entregarlos generarás un archivo .tar que incluye todos los archivos fuente. Para prepararlo debes usar el comando
+
+```
+mingw32-make entrega
+```
+
+Nota: Este comando correrá primero todas las pruebas y fallará si hay algún error.
+
+Si pasaron todas las pruebas generará el archivo *entrega.tar*, el cual debes subir al aula para entregar la tarea.
+

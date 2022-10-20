@@ -2,7 +2,7 @@ all: force cod_8_3 decod_3_8 mux_8_1 rom_16x7 bcd_7seg teclado
 cod_8_3: force 
 	ghdl -m --std=08 cod_8_3_tb
 	ghdl -r --std=08 cod_8_3_tb
-decod_3_8: force
+decod_2_4: force
 	ghdl -m --std=08 decod_3_8_tb
 	ghdl -r --std=08 decod_3_8_tb
 mux_8_1: force
@@ -18,6 +18,10 @@ teclado: force
 	ghdl -m --std=08 teclado_tb
 	ghdl -r --std=08 teclado_tb
 force: work-obj08.cf
+
+entrega: all entrega.tar
+entrega.tar:  
+	tar -cf entrega.tar cod_8_3.vhd decod_2_4.vhd mux_8_1.vhd rom_16x7.vhd bcd_7seg.vhd teclado.vhd
 
 clean:
 	ghdl clean
