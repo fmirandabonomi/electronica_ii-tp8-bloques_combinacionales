@@ -1,10 +1,10 @@
-all: force cod_8_3 decod_3_8 mux_8_1 rom_16x7 bcd_7seg teclado
+all: force cod_8_3 decod_2_4 mux_8_1 rom_16x7 bcd_7seg teclado
 cod_8_3: force 
 	ghdl -m --std=08 cod_8_3_tb
 	ghdl -r --std=08 cod_8_3_tb
 decod_2_4: force
-	ghdl -m --std=08 decod_3_8_tb
-	ghdl -r --std=08 decod_3_8_tb
+	ghdl -m --std=08 decod_2_4_tb
+	ghdl -r --std=08 decod_2_4_tb
 mux_8_1: force
 	ghdl -m --std=08 mux_8_1_tb
 	ghdl -r --std=08 mux_8_1_tb
