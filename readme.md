@@ -56,8 +56,6 @@ Ejemplos:
 
 ### ROM $16\times 7$
 
-Puedes usar el multiplexor 16 a 1 en la realización de la ROM.
-
 La ROM $16\times 7$ cuenta con una entrada de dirección de $7$ bits, una entrada de habilitación y una salida de $7$ bits. Si la habilitación es '0' entonces la salida estará en alta impedancia. Si la habilitación es '1' y la dirección $n$ entonces la salida corresponde al dato almacenado en la dirección $n$.
 
 Ejemplos:
