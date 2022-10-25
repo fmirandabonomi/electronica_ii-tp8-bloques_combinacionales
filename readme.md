@@ -50,8 +50,8 @@ Ejemplos:
 El multiplexor de $8$ a $1$ cuenta con una entrada de selección de $3$ bits, una entrada de habilitación, $8$ entradas de datos y una salida. Cuando el multiplexor está deshabilitado la salida estará en un estado de alta impedancia. Cuando el multiplexor está habilitado y la entrada de selección tiene el valor $n$ entonces la salida tendrá el valor lógico de la entrada de dato en posición $n$.
 
 Ejemplos:
-- Datos "01000000", Selector "101", Habilitación '1' -> Salida '1'
-- Datos "01000000", Selector distinto de "101", Habilitación '1' -> Salida '0'
+- Datos "01000000", Selector "110", Habilitación '1' -> Salida '1'
+- Datos "01000000", Selector distinto de "110", Habilitación '1' -> Salida '0'
 - Datos "01000000", Selector "XXX", Habilitación '0' -> Salida 'Z'
 
 ### ROM $16\times 7$
