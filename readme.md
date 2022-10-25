@@ -65,7 +65,7 @@ Contenido:  (0 =>"0000001",1 =>"1001111",2 =>"0010010",3 =>"0000110",4 =>"100110
 
 - Dirección "0000", habilitación '1' -> salida "0000001"
 - Dirección "XXXX", habilitación '0' -> salida "ZZZZZZZ"
-- Dirección "0101", habilitación '1' -> salida "0100000"
+- Dirección "0101", habilitación '1' -> salida "0100100"
 
 ## Aplicación
 
