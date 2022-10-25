@@ -34,8 +34,8 @@ Deberás implementar en VHDL los siguientes bloques combinacionales:
 
 El codificador $8$ a $3$ tiene una entrada de $8$ bits en código one-hot, una salida binaria de $3$ bits y una salida de palabra válida. Si el bit $n$ de la entrada es '1' y los demás bits son '0' entonces la salida binaria será $n$ y la salida de palabra válida será '1'. Si todos los bits de entrada son cero o hay más de un uno entonces el valor de salida binaria es indiferente y la salida de palabra válida será '0'. 
 Ejemplos:
-- Entrada: "00000100" -> Salida: "0010" Palabra válida: '1'.
-- Entrada: "00000000" -> Salida: "XXXX" Palabra válida: '0'.
+- Entrada: "00000100" -> Salida: "010" Palabra válida: '1'.
+- Entrada: "00000000" -> Salida: "XXX" Palabra válida: '0'.
 
 ### Decodificador $2$ a $4$
 
