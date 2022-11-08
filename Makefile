@@ -19,6 +19,15 @@ teclado: force
 	ghdl -r --std=08 teclado_tb
 force: work-obj08.cf
 
+corrige: recupera all
+
+reset:
+	del entrega.tar
+	git reset --hard
+
+recupera:
+	tar -xf entrega.tar
+
 entrega: all entrega.tar
 entrega.tar:  
 	tar -cf entrega.tar cod_8_3.vhd decod_2_4.vhd mux_8_1.vhd rom_16x7.vhd bcd_7seg.vhd teclado.vhd
