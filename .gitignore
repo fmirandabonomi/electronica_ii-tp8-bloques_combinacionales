@@ -1,2 +1,5 @@
 /impl_referencia
 /work-obj08.cf
+*.vcd
+*.ghw
+*.tar
