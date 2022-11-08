@@ -189,6 +189,24 @@ begin
                         severity error;
         end loop;
         if all_pass then
+            x_in   <= "01010101";
+            hab_in <= '1';
+            wait for 1 ns;
+            for i in 0 to 7 loop
+                sel_in <= std_logic_vector(to_unsigned(i,3));
+                wait for 1 ns;
+                pass := y_out = x_in(i);
+                if not pass then
+                    all_pass := false;
+                    report "Datos "&to_string(x_in)&" selector "&to_string(sel_in)
+                            &lf&"  Salida esperada "&std_logic'image(x_in(i))
+                            &lf&"  Salida obtenida "&std_logic'image(y_out)
+                         severity error;
+                    exit;
+                end if;
+            end loop;
+        end if;
+        if all_pass then
             report nombre&" [PASS]" severity note;
         else
             report nombre&" [FAIL]" severity failure;
