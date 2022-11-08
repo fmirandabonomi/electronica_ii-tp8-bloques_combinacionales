@@ -60,9 +60,6 @@ force: work-obj08.cf
 
 corrige: recupera all
 
-reset:
-	git checkout -f *
-
 recupera:
 	tar -xf entrega.tar
 
