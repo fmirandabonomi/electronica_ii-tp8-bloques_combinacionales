@@ -1,3 +1,9 @@
+ifeq ($(suffix $(SHELL)),.exe)
+	rm = del
+else
+	rm = rm
+endif
+
 all: force cod_8_3 decod_2_4 mux_8_1 rom_16x7 bcd_7seg teclado
 cod_8_3: force 
 	ghdl -m --std=08 cod_8_3_tb
@@ -69,5 +75,8 @@ entrega.tar:
 
 clean:
 	ghdl clean
+	$(rm) *.ghw
+	$(rm) *.cf
+	$(rm) entrega.tar
 work-obj08.cf: *.vhd
 	ghdl -i --std=08 *.vhd
