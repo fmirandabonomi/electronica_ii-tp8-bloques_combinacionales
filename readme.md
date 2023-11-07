@@ -2,21 +2,21 @@
 
 El objetivo de este práctico es conseguir familiaridad con los bloques lógicos combinacionales más comunes. Consta de dos partes. En la primera parte implementarás en vhdl de bloques combinacionales comunes. En la segunda parte utilizarás los bloques combinacionales para la implementación de un circuito lógico combinacional.
 
-Para cada componente a desarrollar hay implementado un banco de pruebas de VHDL. Para ejecutar las pruebas usar los siguientes comandos (para ejecutar en linux usar make en lugar de mingw32-make)
+Para cada componente a desarrollar hay implementado un banco de pruebas de VHDL. Para ejecutar las pruebas usar los siguientes comandos (para ejecutar en linux usar make en lugar de make)
 
 Para correr **todas** las pruebas (se detiene en la primera prueba que falla):
 
 ```
-mingw32-make
+make
 ```
 
-Para correr las pruebas correspondientes a un módulo en particular usa ```mingw32-make <modulo>```. Por ejemplo para *cod_8_3* usa
+Para correr las pruebas correspondientes a un módulo en particular usa ```make <modulo>```. Por ejemplo para *cod_8_3* usa
 
 ```
-mingw32-make cod_8_3
+make cod_8_3
 ```
 
-Es necesario tener instalado ghdl y make (mingw32-make en windows). Consultar el TP1 para instrucciones de como configurar un entorno.
+Es necesario tener instalado ghdl y make. Consultar el TP1 para instrucciones de como configurar un entorno.
 
 Para completar el práctico consulta las secciones *Bloques combinacionales* y *Aplicación*. Para completar el práctico consulta la sección *Entrega del práctico*.
 
@@ -135,7 +135,7 @@ El driver de teclado matricial cuenta con una entrada de habilitación, una entr
 Como este práctico cuenta con varios archivos fuente, para entregarlos generarás un archivo .tar que incluye todos los archivos fuente. Para prepararlo debes usar el comando
 
 ```
-mingw32-make entrega
+make entrega
 ```
 
 Nota: Este comando correrá primero todas las pruebas y fallará si hay algún error.
